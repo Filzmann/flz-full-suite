@@ -12,10 +12,15 @@ Verkaufbare Fachprodukte sind AD Kalender (`adcalendar`), Assistenzplanung
 Recruitment (`adrecruitment`). LocalBase und OrgSuite sind mitgelieferte
 Infrastruktur und keine eigenständigen Fachprodukte.
 
+Der BQ-Planer (`adbqplanung`) ist als sechstes, navigierbares
+Entwicklungsprodukt katalogisiert. Seine `fullSuiteBundle`- und
+`productBundle`-Flags bleiben bis zur dokumentierten Release-Reife `false`;
+damit verändert er die aktuellen Lieferartefakte nicht.
+
 Jedes Produktbundle enthält LocalBase, OrgSuite und genau ein Fachprodukt. Bei
 genau einem aktiven Fachprodukt bleibt OrgSuite deaktiviert; ab zwei
 Fachprodukten aktiviert der geprüfte Installer OrgSuite. Das vollständige
-Suite-Bundle enthält alle sieben Apps. AD Recruitment besitzt zusätzlich ein
+Suite-Bundle enthält alle sieben derzeit freigegebenen Apps. AD Recruitment besitzt zusätzlich ein
 eigenes Produktpaket und wird nicht in die Pakete anderer Fachprodukte gelegt.
 
 Der versionierte Produktkatalog in LocalBase ist die kanonische Quelle für

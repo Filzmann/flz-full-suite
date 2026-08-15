@@ -53,7 +53,7 @@ Der Rückbauweg ist bewusst einfach und vollständig:
 5. `occ status`, App-Liste und Nextcloud-Log prüfen.
 6. Technische und fachliche Kurzabnahme wiederholen.
 
-Ein einzelnes App-Verzeichnis wird nur dann isoliert zurückgerollt, wenn nachweislich keine Migration und kein app-übergreifender Vertragswechsel stattgefunden hat. `localbase` darf nicht deaktiviert oder entfernt werden, solange eines der fünf AD-Fachprodukte aktiv ist. OrgSuite darf nur deaktiviert werden, wenn ihre AD-/BR-Navigation und ihr Adminadapter nicht mehr benötigt werden.
+Ein einzelnes App-Verzeichnis wird nur dann isoliert zurückgerollt, wenn nachweislich keine Migration und kein app-übergreifender Vertragswechsel stattgefunden hat. `localbase` darf nicht deaktiviert oder entfernt werden, solange ein katalogisiertes AD-Fachprodukt aktiv ist. OrgSuite darf nur deaktiviert werden, wenn ihre AD-/BR-Navigation und ihr Adminadapter nicht mehr benötigt werden.
 
 ## Regelmäßige Betriebsprüfung
 
@@ -85,7 +85,7 @@ Beide Befehle müssen bei aktiver App genau einen Eintrag liefern. Der Zeitstemp
 
 Zusätzlich kontrollieren:
 
-- neue Fehler der Logger `orgsuite`, `adcalendar`, `adplaner`, `adurlaub`, `adroom` und `adrecruitment`,
+- neue Fehler der Logger `orgsuite`, `adcalendar`, `adplaner`, `adurlaub`, `adroom`, `adrecruitment` und bei einer Entwicklungsinstallation `adbqplanung`,
 - fehlgeschlagene Cron-/Background-Jobs,
 - Datenbank-, Dateisystem- und Inode-Auslastung,
 - Zertifikatsablauf und Erreichbarkeit der Nextcloud-Instanz,

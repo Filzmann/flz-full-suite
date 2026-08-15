@@ -1,8 +1,10 @@
 # AD Suite für Nextcloud
 
-Die AD Suite bündelt sieben eigenständige Nextcloud-Apps für Dienst-,
-Assistenz-, Urlaubs-, Raum- und Bewerbungsprozesse unter einer gemeinsamen
-Navigation und Organisationskonfiguration.
+Die AD Suite führt sechs eigenständige Fachprodukte für Dienst-, Assistenz-,
+Urlaubs-, Raum-, Bewerbungs- und Basisqualifizierungsprozesse unter einer
+gemeinsamen Navigation und Organisationskonfiguration. Der aktuelle
+Release-Candidate bündelt weiterhin die fünf bereits lieferbaren Produkte
+mit LocalBase und OrgSuite, insgesamt sieben Apps.
 
 > Status: Release Candidate für ein kontrolliertes Staging auf Nextcloud 34 mit PHP ab 8.3. Vor einem produktiven Einsatz sind Neuinstallationstest, Datenschutz- und Mitbestimmungsprüfung, Sicherheitsreview und fachliche Abnahme erforderlich.
 
@@ -17,8 +19,9 @@ Navigation und Organisationskonfiguration.
 | AD Urlaub | Geplante und genehmigte Urlaube mit Rechte- und Konfliktprüfung | [nextcloud-adurlaub](https://github.com/Filzmann/nextcloud-adurlaub) |
 | AD Raumplaner | Zeitlich ausgerichtete, kollisionsfreie Raumbuchungen | [nextcloud-adroom](https://github.com/Filzmann/nextcloud-adroom) |
 | AD Recruitment (`adrecruitment`) | Stellen, Personen, Bewerbungen und versionierte Interviews | [nextcloud-recruitment](https://github.com/Filzmann/nextcloud-recruitment) |
+| AD BQ-Planer (`adbqplanung`) | Basisqualifizierungen, Curricula, Dozentinnen und Praxisreflexionen | noch nicht öffentlich veröffentlicht |
 
-Die fünf Fachapps sind einzeln verkauf-, installier- und nutzbar. Jedes
+Die fünf freigegebenen Fachapps sind einzeln verkauf-, installier- und nutzbar. Jedes
 Produktbundle bringt LocalBase und OrgSuite als kompatible Infrastruktur mit;
 ab zwei Fachprodukten wird OrgSuite für gemeinsame Navigation und
 Administration aktiviert. Fehlende Integrationspartner werden nicht als
@@ -29,6 +32,8 @@ Der versionierte LocalBase-Produktkatalog trennt Menüzugehörigkeit,
 Standalone-Fähigkeit und Bundle-Zugehörigkeit. AD Recruitment gehört zum
 gemeinsamen AD-Menü, zum vollständigen AD-Suite-Archiv und erhält ein eigenes
 Produktpaket. Es wird nicht in Produktpakete anderer Fachapps aufgenommen.
+Der BQ-Planer ist bereits Menü- und Standalone-Produkt, seine Full-Suite- und
+Einzelbundle-Flags bleiben bis zur Release-Reife deaktiviert.
 
 Navigation erteilt keine Rechte; schreibende und lesende Zugriffskontrollen werden serverseitig in den jeweiligen Apps durchgesetzt. LocalBase und OrgSuite sind mitgelieferte Infrastruktur, keine separat vermarkteten Fachprodukte.
 

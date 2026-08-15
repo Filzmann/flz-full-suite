@@ -31,6 +31,9 @@
 ## Fachliche Pflichtprüfungen
 
 - [ ] Suite-Quermenü bleibt in Kalender, Assistenzplanung, Urlaub, Räumen und AD Recruitment erreichbar.
+- [ ] Bei einer gesonderten BQ-Entwicklungsinstallation ist der BQ-Planer im
+  Suite-Quermenü und allein über seinen Standalone-Einstieg erreichbar; diese
+  Prüfung ist kein Bundle- oder Release-Nachweis.
 - [ ] Normale Konten sehen ausschließlich eigene, gemeinsame oder organisatorisch unterstellte Personen.
 - [ ] Direkte API-Aufrufe auf nicht erlaubte Personen oder Adminfunktionen werden abgewiesen.
 - [ ] Eigene Dienste und Termine können bearbeitet werden; Peerrechte bleiben auf freigegebene Gruppen und Bürobereiche begrenzt.
