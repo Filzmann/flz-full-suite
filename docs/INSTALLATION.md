@@ -12,6 +12,9 @@ Verkaufbare Fachprodukte sind:
 - `adroom` – AD Raumplaner.
 - `adrecruitment` – AD Recruitment.
 
+`adbqplanung` – AD BQ-Planer – ist als Entwicklungsprodukt katalogisiert,
+aber noch nicht Bestandteil eines Installations- oder Suite-Bundles.
+
 Jedes Produktbundle enthält zusätzlich eine kompatible Version von `localbase` und `orgsuite`. Diese beiden Apps sind mitgelieferte technische Infrastruktur und keine separaten Fachprodukte. Die Fachapps funktionieren einzeln. Ab zwei aktivierten AD-Fachprodukten bündelt OrgSuite Navigation und Organisationsadministration.
 
 Es gibt zwei Paketarten:
@@ -21,7 +24,8 @@ Es gibt zwei Paketarten:
 
 AD Recruitment wird im vollständigen AD-Suite-Archiv und als eigenes
 Produktpaket ausgeliefert. Es wird nicht stillschweigend Bestandteil eines
-anderen Fachproduktpakets. Menü- und Bundle-Zugehörigkeit werden im
+anderen Fachproduktpakets. Der BQ-Planer wird in diesem Release noch nicht
+ausgeliefert. Menü- und Bundle-Zugehörigkeit werden im
 mitgelieferten `ad-product-catalog.json` getrennt ausgewiesen; Navigation
 erteilt keine Rechte.
 
