@@ -1,7 +1,8 @@
 # Produktarchitektur der AD-Suite
 
-Diese Datei beschreibt den geltenden Produkt- und Integrationsvertrag. Die
-Roadmap enthält ausschließlich zukünftige Ziele. Der aktuelle lokale
+Diese Datei beschreibt den geltenden Produkt- und Integrationsvertrag. Dieses
+Delivery-Repository führt keine aktive systemweite Roadmap; sie liegt im
+Parent-Workspace unter `docs/zukunftsplan.md`. Der aktuelle lokale
 Kalenderkontext-/Feiertagsumbau ist bis zu getrennten Commits, Delivery-Gate
 und Staging-Abnahme ein Arbeitsstand und kein veröffentlichter Release.
 

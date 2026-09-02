@@ -1,6 +1,11 @@
 # Betriebs- und Rückbauhandbuch der AD-Suite
 
-Dieses Handbuch ergänzt die Installationsanleitung. Es gilt für einzeln oder gemeinsam ausgelieferte AD-Fachprodukte auf Nextcloud 34 mit PHP ab 8.3. `localbase` und bei mehreren Produkten `orgsuite` sind mitgelieferte Infrastruktur.
+Dieses Handbuch ergänzt die Installationsanleitung. Es gilt für einzeln oder
+gemeinsam ausgelieferte AD-Fachprodukte auf der durch den konkreten
+Releasekandidaten nachgewiesenen Nextcloud-Zielmajor mit PHP ab 8.3. Der
+deklarierte Bereich aller enthaltenen Apps muss zugleich den OpenDesk-Boden
+Nextcloud 33 enthalten. `localbase` und bei mehreren Produkten `orgsuite`
+sind mitgelieferte Infrastruktur.
 
 ## Verantwortlichkeiten vor der Inbetriebnahme
 

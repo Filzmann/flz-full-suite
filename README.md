@@ -6,7 +6,10 @@ gemeinsamen Navigation und Organisationskonfiguration. Der aktuelle
 Release-Candidate bündelt weiterhin die fünf bereits lieferbaren Produkte
 mit LocalBase und OrgSuite, insgesamt sieben Apps.
 
-> Status: Release Candidate für ein kontrolliertes Staging auf Nextcloud 34 mit PHP ab 8.3. Vor einem produktiven Einsatz sind Neuinstallationstest, Datenschutz- und Mitbestimmungsprüfung, Sicherheitsreview und fachliche Abnahme erforderlich.
+> Status: Der nächste Release Candidate muss den OpenDesk-Boden Nextcloud 33
+> und seine ausdrücklich benannte Zielmajor enthalten. Die dafür nötigen
+> app-lokalen Runtime-Nachweise sind noch nicht vollständig; derzeit besteht
+> deshalb keine neue Delivery-Freigabe. PHP ab 8.3 bleibt vorgesehen.
 
 ## Bestandteile
 
@@ -39,15 +42,20 @@ Navigation erteilt keine Rechte; schreibende und lesende Zugriffskontrollen werd
 
 ## Installation und Abnahme
 
-- [Suiteweite Roadmap](ROADMAP.md)
 - [Produktarchitektur](docs/ARCHITECTURE.md)
-- [Aktiver Ausführungsplan](docs/IMPLEMENTATION-PLAN.md)
 - [Maschinenlesbares Hardcoding-Inventar](docs/HARDCODING-INVENTORY.json)
 - [Staging-Installation](docs/INSTALLATION.md)
 - [LDAP- und Univention-Betriebsvertrag](docs/LDAP-UNIVENTION.md)
 - [Betrieb und Rückbau](docs/OPERATIONS.md)
 - [Abnahmeprotokoll](docs/ACCEPTANCE.md)
 - [Delivery-Gate und Testabdeckung](docs/DELIVERY-GATE.md)
+
+Dieses Delivery-Repository führt keine unabhängige systemweite Roadmap. Die
+aktive Cross-App-, Suite- und Delivery-Planung liegt ausschließlich im
+Parent-Workspace unter `docs/zukunftsplan.md`; app-lokale Aufgaben verbleiben
+in den jeweiligen App-Repositories. Abgelöste Planstände werden nicht als
+zweite Dokumentwahrheit gepflegt; maßgeblich sind der Root-Zukunftsplan und
+die App-Roadmaps.
 
 Die fünf Produktbundles `ad-product-<app-id>-<release>.tar.gz`, das vollständige Suite-Bundle, Versionsmanifeste und SHA-256-Prüfsummen werden gemeinsam im jeweiligen GitHub-Release bereitgestellt. Produktinstallationen verwenden das enthaltene `install.sh` und nicht einzelne rohe Fachapp-Archive.
 

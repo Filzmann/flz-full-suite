@@ -1,6 +1,11 @@
 # AD-Suite auf einem Staging-Server installieren
 
-Diese Anleitung gilt für den ersten internen Releasekandidaten der AD-Suite auf Nextcloud 34 mit PHP ab 8.3. Die bisher verifizierte Referenzumgebung verwendet MySQL/MariaDB.
+Diese Anleitung gilt für einen vom Delivery-Gate bestätigten internen
+Releasekandidaten der AD-Suite mit PHP ab 8.3. Der Kandidat muss Nextcloud 33
+als OpenDesk-Boden und die für den konkreten Release benannte Zielmajor in
+allen enthaltenen App-Metadaten abdecken. Die bisherige Referenzumgebung
+verwendet MySQL/MariaDB; eine Plattformzusage entsteht nur aus den Nachweisen
+des konkreten Kandidaten.
 
 ## Liefermodelle
 
@@ -29,7 +34,10 @@ ausgeliefert. Menü- und Bundle-Zugehörigkeit werden im
 mitgelieferten `ad-product-catalog.json` getrennt ausgewiesen; Navigation
 erteilt keine Rechte.
 
-Für Einzelprodukte ist immer der mitgelieferte Installer zu verwenden. Nextcloud 34 installiert App-Abhängigkeiten aus `info.xml` nicht automatisch; das Produktbundle übernimmt deshalb Reihenfolge, Prüfsummen und Aktivierung der Infrastruktur.
+Für Einzelprodukte ist immer der mitgelieferte Installer zu verwenden.
+Nextcloud installiert diese mitgelieferten App-Abhängigkeiten nicht als
+Produktbundle; das Bundle übernimmt deshalb Reihenfolge, Prüfsummen und
+Aktivierung der Infrastruktur.
 
 ## Server vorab prüfen
 
@@ -101,7 +109,9 @@ OrgSuite wird nicht automatisch deaktiviert, wenn später ein Produkt manuell de
 
 ## Vollständige Suite installieren
 
-Das Suite-Bundle und die danebenliegende Prüfsumme gemeinsam übertragen. Im Beispiel wird `RELEASE` vorher durch die konkrete Releasebezeichnung wie `nc34-rc2` ersetzt:
+Das Suite-Bundle und die danebenliegende Prüfsumme gemeinsam übertragen. Im
+Beispiel wird `RELEASE` vorher durch die konkrete Releasebezeichnung wie
+`nc35-rc2` ersetzt:
 
 ```bash
 sha256sum --check ad-suite-RELEASE.tar.gz.sha256

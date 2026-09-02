@@ -13,7 +13,10 @@ scripts/check-ad-suite-delivery
 
 Geprüft werden:
 
-- App-Metadaten und die festgelegte Nextcloud-34-/PHP-8.3-Kompatibilität,
+- App-Metadaten mit enthaltenem OpenDesk-Boden Nextcloud 33, der explizit
+  über `NEXTCLOUD_TARGET_MAJOR` gewählten Release-Zielmajor und PHP ab 8.3;
+  jede deklarierte Obergrenze benötigt zuvor den lückenlosen
+  Future-Compatibility-Nachweis,
 - eigenständige Fachapp-Verträge ohne ungültige Manifest- oder harte OrgSuite-Abhängigkeiten,
 - AGPL-Lizenz, README, Changelog und App-Anweisungen,
 - fehlende lokale, ungültige oder WordPress-spezifische Produktionsverweise,
