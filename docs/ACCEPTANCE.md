@@ -1,4 +1,4 @@
-# Abnahmeprotokoll der AD-Suite
+# Abnahmeprotokoll der Filzmann Full Suite
 
 ## Release und Umgebung
 
@@ -19,7 +19,7 @@
 - [ ] Äußere Bundle-Prüfsumme und alle Einträge in `SHA256SUMS` stimmen.
 - [ ] Sieben App-Archive entsprechen `manifest.tsv` und wurden in dokumentierter Reihenfolge aktiviert.
 - [ ] `occ status` meldet keinen ausstehenden Datenbank-Upgradebedarf.
-- [ ] Bei aktivem AD Kalender und LocalBase liefern die dokumentierten
+- [ ] Bei aktivem Filzmann Kalender und LocalBase liefern die dokumentierten
   Klassenfilter für Kalenderabgleich und gemeinsamen Ferien-/Feiertagsabruf
   jeweils genau einen registrierten Hintergrundjob.
 - [ ] Delivery-Gate einschließlich DDEV-/Zielserverstatus ist erfolgreich.
@@ -30,7 +30,10 @@
 
 ## Fachliche Pflichtprüfungen
 
-- [ ] Suite-Quermenü bleibt in Kalender, Assistenzplanung, Urlaub, Räumen und AD Recruitment erreichbar.
+- [ ] Suite-Quermenü bleibt in Kalender, Assistenzplanung, Urlaub, Räumen und Filzmann Recruitment erreichbar.
+- [ ] Bei einer gesonderten BQ-Entwicklungsinstallation ist der BQ-Planer im
+  Suite-Quermenü und allein über seinen Standalone-Einstieg erreichbar; diese
+  Prüfung ist kein Bundle- oder Release-Nachweis.
 - [ ] Normale Konten sehen ausschließlich eigene, gemeinsame oder organisatorisch unterstellte Personen.
 - [ ] Direkte API-Aufrufe auf nicht erlaubte Personen oder Adminfunktionen werden abgewiesen.
 - [ ] Eigene Dienste und Termine können bearbeitet werden; Peerrechte bleiben auf freigegebene Gruppen und Bürobereiche begrenzt.

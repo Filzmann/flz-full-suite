@@ -1,31 +1,43 @@
-# AD-Suite auf einem Staging-Server installieren
+# Filzmann Full Suite auf einem Staging-Server installieren
 
-Diese Anleitung gilt für den ersten internen Releasekandidaten der AD-Suite auf Nextcloud 34 mit PHP ab 8.3. Die bisher verifizierte Referenzumgebung verwendet MySQL/MariaDB.
+Diese Anleitung gilt für einen vom Delivery-Gate bestätigten internen
+Releasekandidaten der Filzmann Full Suite mit PHP ab 8.3. Der Kandidat muss Nextcloud 33
+als OpenDesk-Boden und die für den konkreten Release benannte Zielmajor in
+allen enthaltenen App-Metadaten abdecken. Die bisherige Referenzumgebung
+verwendet MySQL/MariaDB; eine Plattformzusage entsteht nur aus den Nachweisen
+des konkreten Kandidaten.
 
 ## Liefermodelle
 
 Verkaufbare Fachprodukte sind:
 
-- `adcalendar` – AD Kalender,
-- `adplaner` – Assistenzplanung,
-- `adurlaub` – AD Urlaub,
-- `adroom` – AD Raumplaner.
-- `adrecruitment` – AD Recruitment.
+- `flzcalendar` – Filzmann Kalender,
+- `flzplaner` – Assistenzplanung,
+- `flzurlaub` – Filzmann Urlaubsplanung,
+- `flzroom` – Filzmann Raumplaner.
+- `flzrecruitment` – Filzmann Recruitment.
 
-Jedes Produktbundle enthält zusätzlich eine kompatible Version von `localbase` und `orgsuite`. Diese beiden Apps sind mitgelieferte technische Infrastruktur und keine separaten Fachprodukte. Die Fachapps funktionieren einzeln. Ab zwei aktivierten AD-Fachprodukten bündelt OrgSuite Navigation und Organisationsadministration.
+`flzbqplanung` – Filzmann BQ-Planer – ist als Entwicklungsprodukt katalogisiert,
+aber noch nicht Bestandteil eines Installations- oder Suite-Bundles.
+
+Jedes Produktbundle enthält zusätzlich eine kompatible Version von `localbase` und `orgsuite`. Diese beiden Apps sind mitgelieferte technische Infrastruktur und keine separaten Fachprodukte. Die Fachapps funktionieren einzeln. Ab zwei aktivierten FLZ-Fachprodukten bündelt OrgSuite Navigation und Organisationsadministration.
 
 Es gibt zwei Paketarten:
 
-- `ad-product-<app-id>-RELEASE.tar.gz` für die Installation oder Aktualisierung genau eines Fachprodukts,
-- `ad-suite-RELEASE.tar.gz` für eine vollständige Installation aller fünf Fachprodukte.
+- `flz-product-<app-id>-RELEASE.tar.gz` für die Installation oder Aktualisierung genau eines Fachprodukts,
+- `flz-full-suite-RELEASE.tar.gz` für eine vollständige Installation aller fünf Fachprodukte.
 
-AD Recruitment wird im vollständigen AD-Suite-Archiv und als eigenes
+Filzmann Recruitment wird im vollständigen Archiv der Filzmann Full Suite und als eigenes
 Produktpaket ausgeliefert. Es wird nicht stillschweigend Bestandteil eines
-anderen Fachproduktpakets. Menü- und Bundle-Zugehörigkeit werden im
-mitgelieferten `ad-product-catalog.json` getrennt ausgewiesen; Navigation
+anderen Fachproduktpakets. Der BQ-Planer wird in diesem Release noch nicht
+ausgeliefert. Menü- und Bundle-Zugehörigkeit werden im
+mitgelieferten `flz-product-catalog.json` getrennt ausgewiesen; Navigation
 erteilt keine Rechte.
 
-Für Einzelprodukte ist immer der mitgelieferte Installer zu verwenden. Nextcloud 34 installiert App-Abhängigkeiten aus `info.xml` nicht automatisch; das Produktbundle übernimmt deshalb Reihenfolge, Prüfsummen und Aktivierung der Infrastruktur.
+Für Einzelprodukte ist immer der mitgelieferte Installer zu verwenden.
+Nextcloud installiert diese mitgelieferten App-Abhängigkeiten nicht als
+Produktbundle; das Bundle übernimmt deshalb Reihenfolge, Prüfsummen und
+Aktivierung der Infrastruktur.
 
 ## Server vorab prüfen
 
@@ -60,12 +72,12 @@ Nach ausgeführten App-Migrationen ist ein Downgrade durch bloßes Zurückkopier
 
 ## Einzelprodukt installieren
 
-Produktbundle und äußere Prüfsumme gemeinsam übertragen. Im Beispiel wird `PRODUCT` durch `adcalendar`, `adplaner`, `adurlaub`, `adroom` oder `adrecruitment` und `RELEASE` durch die konkrete Releasebezeichnung ersetzt:
+Produktbundle und äußere Prüfsumme gemeinsam übertragen. Im Beispiel wird `PRODUCT` durch `flzcalendar`, `flzplaner`, `flzurlaub`, `flzroom` oder `flzrecruitment` und `RELEASE` durch die konkrete Releasebezeichnung ersetzt:
 
 ```bash
-sha256sum --check ad-product-PRODUCT-RELEASE.tar.gz.sha256
-tar -xzf ad-product-PRODUCT-RELEASE.tar.gz
-cd ad-product-PRODUCT-RELEASE
+sha256sum --check flz-product-PRODUCT-RELEASE.tar.gz.sha256
+tar -xzf flz-product-PRODUCT-RELEASE.tar.gz
+cd flz-product-PRODUCT-RELEASE
 sha256sum --check SHA256SUMS
 <RUNTIME-KONTEXT> ./install.sh \
   --nextcloud-root <NEXTCLOUD-ROOT> \
@@ -78,8 +90,8 @@ Der Installer:
 1. prüft alle inneren SHA-256-Summen und Archivwurzeln,
 2. installiert beziehungsweise aktualisiert zuerst `localbase`, dann die Fachapp,
 3. verhindert ein unbeabsichtigtes Downgrade auf eine gleiche oder ältere Appversion,
-4. lässt OrgSuite bei genau einem aktiven AD-Produkt deaktiviert,
-5. aktiviert OrgSuite automatisch, sobald mindestens zwei AD-Produkte aktiv sind,
+4. lässt OrgSuite bei genau einem aktiven FLZ-Produkt deaktiviert,
+5. aktiviert OrgSuite automatisch, sobald mindestens zwei FLZ-Produkte aktiv sind,
 6. führt `occ upgrade` für Aktualisierungen bereits aktiver Apps aus,
 7. deaktiviert bei einem Fehler vor dem Datenbankupgrade neu aktivierte Apps wieder und stellt zuvor vorhandene Appverzeichnisse wieder her.
 
@@ -97,12 +109,14 @@ OrgSuite wird nicht automatisch deaktiviert, wenn später ein Produkt manuell de
 
 ## Vollständige Suite installieren
 
-Das Suite-Bundle und die danebenliegende Prüfsumme gemeinsam übertragen. Im Beispiel wird `RELEASE` vorher durch die konkrete Releasebezeichnung wie `nc34-rc2` ersetzt:
+Das Suite-Bundle und die danebenliegende Prüfsumme gemeinsam übertragen. Im
+Beispiel wird `RELEASE` vorher durch die konkrete Releasebezeichnung wie
+`nc35-rc2` ersetzt:
 
 ```bash
-sha256sum --check ad-suite-RELEASE.tar.gz.sha256
-tar -xzf ad-suite-RELEASE.tar.gz
-cd ad-suite-RELEASE
+sha256sum --check flz-full-suite-RELEASE.tar.gz.sha256
+tar -xzf flz-full-suite-RELEASE.tar.gz
+cd flz-full-suite-RELEASE
 sha256sum --check SHA256SUMS
 <RUNTIME-KONTEXT> ./install.sh \
   --nextcloud-root <NEXTCLOUD-ROOT> \
@@ -119,11 +133,11 @@ Der Suite-Installer nutzt dieselben Prüfungen, Backups und Rückbaugrenzen wie 
 ```bash
 <DEPLOY-KONTEXT> tar -xzf localbase-*.tar.gz -C <CUSTOM-APPS>/
 <DEPLOY-KONTEXT> tar -xzf orgsuite-*.tar.gz -C <CUSTOM-APPS>/
-<DEPLOY-KONTEXT> tar -xzf adcalendar-*.tar.gz -C <CUSTOM-APPS>/
-<DEPLOY-KONTEXT> tar -xzf adplaner-*.tar.gz -C <CUSTOM-APPS>/
-<DEPLOY-KONTEXT> tar -xzf adurlaub-*.tar.gz -C <CUSTOM-APPS>/
-<DEPLOY-KONTEXT> tar -xzf adroom-*.tar.gz -C <CUSTOM-APPS>/
-<DEPLOY-KONTEXT> tar -xzf adrecruitment-*.tar.gz -C <CUSTOM-APPS>/
+<DEPLOY-KONTEXT> tar -xzf flzcalendar-*.tar.gz -C <CUSTOM-APPS>/
+<DEPLOY-KONTEXT> tar -xzf flzplaner-*.tar.gz -C <CUSTOM-APPS>/
+<DEPLOY-KONTEXT> tar -xzf flzurlaub-*.tar.gz -C <CUSTOM-APPS>/
+<DEPLOY-KONTEXT> tar -xzf flzroom-*.tar.gz -C <CUSTOM-APPS>/
+<DEPLOY-KONTEXT> tar -xzf flzrecruitment-*.tar.gz -C <CUSTOM-APPS>/
 ```
 
 Jedes Archiv enthält genau den zur App-ID passenden Wurzelordner. Keine Ordner umbenennen.
@@ -139,11 +153,11 @@ Auf einem leeren Staging-System können die Apps direkt in Abhängigkeitsreihenf
 cd <NEXTCLOUD-ROOT>
 <RUNTIME-KONTEXT> <CLI-PHP> occ app:enable localbase
 <RUNTIME-KONTEXT> <CLI-PHP> occ app:enable orgsuite
-<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable adcalendar
-<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable adplaner
-<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable adurlaub
-<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable adroom
-<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable adrecruitment
+<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable flzcalendar
+<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable flzplaner
+<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable flzurlaub
+<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable flzroom
+<RUNTIME-KONTEXT> <CLI-PHP> occ app:enable flzrecruitment
 <RUNTIME-KONTEXT> <CLI-PHP> occ status
 <RUNTIME-KONTEXT> <CLI-PHP> occ app:list --enabled
 ```
@@ -161,7 +175,7 @@ Sobald offizielle app-spezifische Zertifikate vorliegen, kann der Release-Builde
 
 ## Organisationskonfiguration
 
-Bei einem einzelnen AD-Fachprodukt erscheinen die organisationsweiten Einstellungen im Nextcloud-Adminabschnitt dieses Produkts. Ab zwei aktivierten AD-Fachprodukten erscheinen sie im Adminabschnitt der OrgSuite. Dort prüfen:
+Bei einem einzelnen FLZ-Fachprodukt erscheinen die organisationsweiten Einstellungen im Nextcloud-Adminabschnitt dieses Produkts. Ab zwei aktivierten FLZ-Fachprodukten erscheinen sie im Adminabschnitt der OrgSuite. Dort prüfen:
 
 - Rollen- und Gruppen-IDs,
 - Bereiche Nordost, West und Süd,
@@ -169,11 +183,11 @@ Bei einem einzelnen AD-Fachprodukt erscheinen die organisationsweiten Einstellun
 - Kalender-Peerrechte,
 - Urlaubs-Peerrechte.
 
-Die ausschließlich appbezogenen Raumstammdaten bleiben unabhängig davon im eigenen Nextcloud-Adminabschnitt `AD Raumplaner`.
+Die ausschließlich appbezogenen Raumstammdaten bleiben unabhängig davon im eigenen Nextcloud-Adminabschnitt `Filzmann Raumplaner`.
 
 Bei Univention-/LDAP-Betrieb ist zusätzlich der [LDAP- und Univention-Betriebsvertrag](LDAP-UNIVENTION.md) abzuarbeiten. Insbesondere müssen interne Nextcloud-Benutzer-IDs stabil bleiben und alle konfigurierten Gruppen-IDs in Nextcloud sichtbar sein.
 
-Fehlende Fachapps sind ein unterstützter Standalone-Zustand: Ohne AD Urlaub bleiben manuelle Sperrtermine im Kalender möglich; ohne AD Kalender bleibt Urlaubsplanung möglich, jedoch ohne automatische Dienstkonfliktprüfung; Raumbuchungen, Assistenzplanung und AD Recruitment bleiben ohne die jeweils anderen Produkte eigenständig nutzbar.
+Fehlende Fachapps sind ein unterstützter Standalone-Zustand: Ohne Filzmann Urlaubsplanung bleiben manuelle Sperrtermine im Kalender möglich; ohne Filzmann Kalender bleibt Urlaubsplanung möglich, jedoch ohne automatische Dienstkonfliktprüfung; Raumbuchungen, Assistenzplanung und Filzmann Recruitment bleiben ohne die jeweils anderen Produkte eigenständig nutzbar.
 
 Demo-Packs werden nie automatisch ausgeführt und importieren keine WordPress-Bestandsdaten. Sie dürfen ausschließlich nach bewusster Bestätigung im Adminbereich der jeweiligen Fachapp installiert werden. Auf einem realitätsnahen LDAP-Staging müssen dafür synthetische Konten und schreibbare Demogruppen verwendet werden; read-only LDAP-Gruppen werden nicht verändert.
 

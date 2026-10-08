@@ -1,13 +1,13 @@
 # LDAP- und Univention-Betriebsvertrag
 
-Die AD-Suite ist mit LDAP-Konten und -Gruppen kompatibel, weil sie ausschließlich die Benutzer-, Sitzungs- und Gruppen-APIs von Nextcloud verwendet. Die Fachapps greifen weder direkt auf LDAP noch auf Univention-Verzeichnisdaten zu. Damit gelten dieselben fachlichen Rechte unabhängig davon, ob ein Konto aus Univention/LDAP oder aus dem lokalen Nextcloud-Backend stammt.
+Die Filzmann Full Suite ist mit LDAP-Konten und -Gruppen kompatibel, weil sie ausschließlich die Benutzer-, Sitzungs- und Gruppen-APIs von Nextcloud verwendet. Die Fachapps greifen weder direkt auf LDAP noch auf Univention-Verzeichnisdaten zu. Damit gelten dieselben fachlichen Rechte unabhängig davon, ob ein Konto aus Univention/LDAP oder aus dem lokalen Nextcloud-Backend stammt.
 
 ## Verbindliche Voraussetzungen
 
 Vor der fachlichen Abnahme müssen Administrator*innen prüfen:
 
-1. Alle in der AD-Organisation konfigurierten Gruppen-IDs sind für Nextcloud sichtbar. Anzeigenamen allein reichen nicht; maßgeblich ist die interne Nextcloud-Gruppen-ID.
-2. Die internen Nextcloud-Benutzer-IDs bleiben stabil. Die AD-Suite speichert diese IDs an Diensten, Terminen, Urlauben, Plänen und Buchungen. LDAP-UUID- oder Internal-Username-Einstellungen dürfen nach Produktivnahme nicht ungeprüft geändert und LDAP-Mappings nicht gelöscht werden.
+1. Alle in der FLZ-Organisation konfigurierten Gruppen-IDs sind für Nextcloud sichtbar. Anzeigenamen allein reichen nicht; maßgeblich ist die interne Nextcloud-Gruppen-ID.
+2. Die internen Nextcloud-Benutzer-IDs bleiben stabil. Die Filzmann Full Suite speichert diese IDs an Diensten, Terminen, Urlauben, Plänen und Buchungen. LDAP-UUID- oder Internal-Username-Einstellungen dürfen nach Produktivnahme nicht ungeprüft geändert und LDAP-Mappings nicht gelöscht werden.
 3. Kritische Rollen verwenden direkte, in Nextcloud erkennbare Mitgliedschaften. Verschachtelte oder dynamische LDAP-Gruppen werden erst nach einem eigenen Allow-/Deny-Test freigegeben.
 4. Ein- und Austritte, Umbenennungen und deaktivierte Verzeichniskonten besitzen einen abgestimmten Lifecycle. Ein LDAP-Konto darf erst entfernt oder neu zugeordnet werden, nachdem fachliche Datensätze und Aufbewahrungspflichten geprüft wurden.
 5. Änderungen an read-only LDAP-Gruppen erfolgen in Univention. Alternativ dürfen bewusst angelegte lokale Nextcloud-Berechtigungsgruppen LDAP-Konten enthalten, wenn dies organisatorisch freigegeben ist.

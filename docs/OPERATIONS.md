@@ -1,6 +1,11 @@
-# Betriebs- und Rückbauhandbuch der AD-Suite
+# Betriebs- und Rückbauhandbuch der Filzmann Full Suite
 
-Dieses Handbuch ergänzt die Installationsanleitung. Es gilt für einzeln oder gemeinsam ausgelieferte AD-Fachprodukte auf Nextcloud 34 mit PHP ab 8.3. `localbase` und bei mehreren Produkten `orgsuite` sind mitgelieferte Infrastruktur.
+Dieses Handbuch ergänzt die Installationsanleitung. Es gilt für einzeln oder
+gemeinsam ausgelieferte FLZ-Fachprodukte auf der durch den konkreten
+Releasekandidaten nachgewiesenen Nextcloud-Zielmajor mit PHP ab 8.3. Der
+deklarierte Bereich aller enthaltenen Apps muss zugleich den OpenDesk-Boden
+Nextcloud 33 enthalten. `localbase` und bei mehreren Produkten `orgsuite`
+sind mitgelieferte Infrastruktur.
 
 ## Verantwortlichkeiten vor der Inbetriebnahme
 
@@ -21,7 +26,7 @@ Ein konsistenter Wiederherstellungspunkt umfasst immer gemeinsam:
 - Datenbank-Dump der vollständigen Nextcloud-Datenbank,
 - Nextcloud-`config/`,
 - Nextcloud-`data/`,
-- alle installierten AD-Fachapp-Verzeichnisse sowie `localbase` und gegebenenfalls `orgsuite` unter `custom_apps/`,
+- alle installierten FLZ-Fachapp-Verzeichnisse sowie `localbase` und gegebenenfalls `orgsuite` unter `custom_apps/`,
 - das eingesetzte Releasebundle einschließlich `manifest.tsv`, `SHA256SUMS` und äußerer SHA-256-Datei,
 - dokumentierte Nextcloud-, PHP-, Datenbank- und Webserverversion.
 
@@ -53,7 +58,7 @@ Der Rückbauweg ist bewusst einfach und vollständig:
 5. `occ status`, App-Liste und Nextcloud-Log prüfen.
 6. Technische und fachliche Kurzabnahme wiederholen.
 
-Ein einzelnes App-Verzeichnis wird nur dann isoliert zurückgerollt, wenn nachweislich keine Migration und kein app-übergreifender Vertragswechsel stattgefunden hat. `localbase` darf nicht deaktiviert oder entfernt werden, solange eines der fünf AD-Fachprodukte aktiv ist. OrgSuite darf nur deaktiviert werden, wenn ihre AD-/BR-Navigation und ihr Adminadapter nicht mehr benötigt werden.
+Ein einzelnes App-Verzeichnis wird nur dann isoliert zurückgerollt, wenn nachweislich keine Migration und kein app-übergreifender Vertragswechsel stattgefunden hat. `localbase` darf nicht deaktiviert oder entfernt werden, solange ein katalogisiertes FLZ-Fachprodukt aktiv ist. OrgSuite darf nur deaktiviert werden, wenn ihre FLZ-/BR-Navigation und ihr Adminadapter nicht mehr benötigt werden.
 
 ## Regelmäßige Betriebsprüfung
 
@@ -66,14 +71,14 @@ Mindestens nach Deployments und ansonsten nach betrieblichem Standard prüfen:
 <RUNTIME-KONTEXT> <CLI-PHP> occ config:system:get loglevel
 ```
 
-Bei installiertem AD Kalender beziehungsweise LocalBase werden nach einem
+Bei installiertem Filzmann Kalender beziehungsweise LocalBase werden nach einem
 Update zusätzlich die beiden periodischen Jobs gezielt geprüft. Die
 Klassenfilter vermeiden, dass sie bei großen Instanzen außerhalb des
 Standardlimits von `background-job:list` liegen:
 
 ```bash
 <RUNTIME-KONTEXT> <CLI-PHP> occ background-job:list \
-  --class='OCA\AdCalendar\BackgroundJob\ReconcileShiftCalendarsJob' \
+  --class='OCA\FlzCalendar\BackgroundJob\ReconcileShiftCalendarsJob' \
   --output=json_pretty
 
 <RUNTIME-KONTEXT> <CLI-PHP> occ background-job:list \
@@ -85,7 +90,7 @@ Beide Befehle müssen bei aktiver App genau einen Eintrag liefern. Der Zeitstemp
 
 Zusätzlich kontrollieren:
 
-- neue Fehler der Logger `orgsuite`, `adcalendar`, `adplaner`, `adurlaub`, `adroom` und `adrecruitment`,
+- neue Fehler der Logger `orgsuite`, `flzcalendar`, `flzplaner`, `flzurlaub`, `flzroom`, `flzrecruitment` und bei einer Entwicklungsinstallation `flzbqplanung`,
 - fehlgeschlagene Cron-/Background-Jobs,
 - Datenbank-, Dateisystem- und Inode-Auslastung,
 - Zertifikatsablauf und Erreichbarkeit der Nextcloud-Instanz,
