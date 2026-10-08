@@ -1,14 +1,14 @@
-# Delivery-Gate der AD-Suite
+# Delivery-Gate der Filzmann Full Suite
 
 Das Delivery-Gate bündelt die wiederholbaren Prüfungen vor jedem Releasekandidaten. Ein Release darf nur aus sauberen App-Repositories gebaut werden.
 
-`scripts/check-ad-suite-delivery` führt den strikten Parent-Fast-Pfad einschließlich der Parent-Contract-Tests genau einmal aus und startet danach nur die Delivery-spezifischen Prüfungen. Ein separater `scripts/check-fast` unmittelbar davor ist im selben Releasepfad nicht erforderlich.
+`scripts/check-flz-full-suite-delivery` führt den strikten Parent-Fast-Pfad einschließlich der Parent-Contract-Tests genau einmal aus und startet danach nur die Delivery-spezifischen Prüfungen. Ein separater `scripts/check-fast` unmittelbar davor ist im selben Releasepfad nicht erforderlich.
 
 ## Stufe 1: lokale Pflichtprüfung
 
 ```bash
 cd <WORKSPACE_ROOT>
-scripts/check-ad-suite-delivery
+scripts/check-flz-full-suite-delivery
 ```
 
 Geprüft werden:
@@ -30,7 +30,7 @@ Der Installer-Contract wird mit einer künstlichen Nextcloud-/`occ`-Umgebung gep
 ## Stufe 2: Nextcloud-Container
 
 ```bash
-RUN_DDEV_CHECKS=1 scripts/check-ad-suite-delivery
+RUN_DDEV_CHECKS=1 scripts/check-flz-full-suite-delivery
 ```
 
 Diese Stufe ergänzt den Nextcloud-Status und prüft, ob alle sieben Apps aktiviert sind.
@@ -45,14 +45,14 @@ Die isolierten PHP-Tests können zusätzlich mit Xdebug/PHPCOV gemessen werden. 
 cd <WORKSPACE_ROOT>/nextcloud-dev
 ddev xdebug on
 cd ..
-scripts/measure-ad-suite-php-coverage.sh
+scripts/measure-flz-full-suite-php-coverage.sh
 cd nextcloud-dev
 ddev xdebug off
 ```
 
 Der Bericht liegt unter `build/coverage/php-summary.tsv`. Das Skript erzwingt standardmäßig mindestens 40 Prozent Gesamt-Line-Coverage; ein bewusst höherer Grenzwert kann über `MIN_TOTAL_COVERAGE` gesetzt werden.
 
-Zusätzlich vergleicht das Gate jede App und den Gesamtwert mit der versionierten Baseline unter `scripts/ad-suite-php-coverage-baseline.tsv`. Ein Rückgang einer einzelnen App wird damit auch dann abgelehnt, wenn eine andere App den Gesamtwert ausgleicht. Die Baseline wird bei nachweislich verbesserter Testabdeckung angehoben; ein Absenken ist keine reguläre Lösung für einen fehlgeschlagenen Testlauf und muss als bewusste Ausnahme begründet werden.
+Zusätzlich vergleicht das Gate jede App und den Gesamtwert mit der versionierten Baseline unter `scripts/flz-full-suite-php-coverage-baseline.tsv`. Ein Rückgang einer einzelnen App wird damit auch dann abgelehnt, wenn eine andere App den Gesamtwert ausgleicht. Die Baseline wird bei nachweislich verbesserter Testabdeckung angehoben; ein Absenken ist keine reguläre Lösung für einen fehlgeschlagenen Testlauf und muss als bewusste Ausnahme begründet werden.
 
 ## TDD-Vertrag
 
@@ -61,8 +61,8 @@ Neue Fachlogik, Fehlerkorrekturen, Berechtigungen, Validierungen und Konfliktreg
 Technische Spikes und reine UI-Erkundungen dürfen vorübergehend ohne vorgelagerten Test entstehen. Vor der Übernahme in Produktivcode werden sie verworfen oder durch passende Unit-, Contract-, Integrations-, Layout- oder Browsertests abgesichert. PHP- und JavaScript-Coverage werden nicht zu einer gemeinsamen Kennzahl vermischt.
 
 Die aktuell verbindlichen PHP- und JavaScript-Baselines werden ausschließlich
-in `scripts/ad-suite-php-coverage-baseline.tsv` und
-`scripts/ad-suite-js-coverage-baseline.tsv` geführt. Beide enthalten AD
+in `scripts/flz-full-suite-php-coverage-baseline.tsv` und
+`scripts/flz-full-suite-js-coverage-baseline.tsv` geführt. Beide enthalten FLZ
 Recruitment als eigenes Fachprodukt; diese Dokumentation dupliziert die
 veränderlichen Messwerte nicht.
 
@@ -73,12 +73,12 @@ JavaScript ist über Syntax-, Komponenten-, Contract- und Fake-DOM-Smokes abgesi
 Das verwendete Konto muss Nextcloud-Admin sein, weil der OrgSuite- und Raum-Smoke auch administrative Schutzgrenzen prüfen.
 
 ```bash
-AD_SUITE_BASE_URL=https://nextcloud-dev.ddev.site \
-AD_SUITE_USER=admin \
-AD_SUITE_PASSWORD='…' \
+FLZ_SUITE_BASE_URL=https://nextcloud-dev.ddev.site \
+FLZ_SUITE_USER=admin \
+FLZ_SUITE_PASSWORD='…' \
 RUN_DDEV_CHECKS=1 \
 RUN_HTTP_SMOKES=1 \
-scripts/check-ad-suite-delivery
+scripts/check-flz-full-suite-delivery
 ```
 
 Die HTTP-Smokes prüfen DOM-Verträge, API-Payloads, CSRF-Ablehnung, Adminschutz sowie selbstbereinigende Urlaub- und Raumbuchungsvorgänge.
@@ -88,7 +88,7 @@ Die HTTP-Smokes prüfen DOM-Verträge, API-Payloads, CSRF-Ablehnung, Adminschutz
 ```bash
 RUN_DDEV_CHECKS=1 \
 RUN_ACCESS_MATRICES=1 \
-scripts/check-ad-suite-delivery
+scripts/check-flz-full-suite-delivery
 ```
 
 Die Rechtematrizen erzeugen temporäre Konten und Gruppenmitgliedschaften für typische Allow-/Deny-Fälle und räumen sie auch bei Fehlern wieder auf. Sie verändern keine vorhandenen Fachdatensätze.

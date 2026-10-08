@@ -5,10 +5,10 @@
   "revalidationRequired": true,
   "scope": {
     "repositories": [
-      "adcalendar",
-      "adplaner",
-      "adroom",
-      "adurlaub",
+      "flzcalendar",
+      "flzplaner",
+      "flzroom",
+      "flzurlaub",
       "br_permission_matrix",
       "brstunden",
       "brtop",
@@ -39,7 +39,7 @@
       "id": "suite-product-catalog",
       "repositories": ["localbase", "orgsuite"],
       "locations": [
-        "localbase/lib/Service/AdProductSuiteService.php",
+        "localbase/lib/Service/FlzProductSuiteService.php",
         "orgsuite/lib/Listener/NavigationListener.php",
         "orgsuite/lib/Controller/EntryController.php",
         "orgsuite/js/suite-navigation.js"
@@ -47,14 +47,14 @@
       "category": "gemeinsamer Vertrag",
       "state": "resolved-by-versioned-localbase-catalog",
       "targetOwner": "localbase",
-      "action": "Umgesetzt über localbase/resources/ad-product-catalog.json, Provider-/Consumer-Verträge und kataloglesende Parent-Skripte.",
+      "action": "Umgesetzt über localbase/resources/flz-product-catalog.json, Provider-/Consumer-Verträge und kataloglesende Parent-Skripte.",
       "priority": 1
     },
     {
       "id": "suite-product-labels",
       "repositories": ["localbase", "orgsuite"],
       "locations": [
-        "localbase/lib/Service/AdProductSuiteService.php",
+        "localbase/lib/Service/FlzProductSuiteService.php",
         "orgsuite/js/suite-navigation.js"
       ],
       "category": "Übersetzung",
@@ -74,9 +74,9 @@
       "priority": 3
     },
     {
-      "id": "ad-organization-bootstrap",
+      "id": "flz-organization-bootstrap",
       "repositories": ["localbase"],
-      "locations": ["localbase/lib/Organization/AdOrganizationDefinition.php"],
+      "locations": ["localbase/lib/Organization/FlzOrganizationDefinition.php"],
       "category": "Administration",
       "state": "already-configurable-bootstrap-default",
       "targetOwner": "localbase",
@@ -84,17 +84,17 @@
       "priority": 2
     },
     {
-      "id": "permission-matrix-ad-group-patterns",
+      "id": "permission-matrix-flz-group-patterns",
       "repositories": ["br_permission_matrix", "localbase"],
       "locations": [
         "br_permission_matrix/lib/Service/GroupCatalogService.php",
-        "br_permission_matrix/lib/Adapter/AdPlanerAdapter.php",
-        "localbase/lib/Organization/AdOrganizationDefinition.php"
+        "br_permission_matrix/lib/Adapter/FlzPlanerAdapter.php",
+        "localbase/lib/Organization/FlzOrganizationDefinition.php"
       ],
       "category": "gemeinsamer Vertrag",
       "state": "bypasses-existing-contract",
       "targetOwner": "localbase",
-      "action": "Die Berechtigungsmatrix liest Rollen-, Bereichs- und Teamgruppen aus einem read-only Organisationssnapshot statt eigener ad-ASN-/ad-EB-/ad-PFK-Regexe.",
+      "action": "Die Berechtigungsmatrix liest Rollen-, Bereichs- und Teamgruppen aus einem read-only Organisationssnapshot statt eigener flz-ASN-/flz-EB-/flz-PFK-Regexe.",
       "priority": 4
     },
     {
@@ -114,14 +114,14 @@
     },
     {
       "id": "calendar-region-timezone",
-      "repositories": ["localbase", "adcalendar", "adroom", "adurlaub"],
+      "repositories": ["localbase", "flzcalendar", "flzroom", "flzurlaub"],
       "locations": [
         "localbase/lib/Calendar/CalendarContext.php",
         "localbase/lib/Calendar/CalendarContextSettingsService.php",
-        "adroom/lib/Service/BookingService.php",
-        "adroom/lib/Service/HolidayService.php",
-        "adcalendar/lib/Service/CalendarDemoPackService.php",
-        "adurlaub/lib/Service/HolidayCalendarService.php"
+        "flzroom/lib/Service/BookingService.php",
+        "flzroom/lib/Service/HolidayService.php",
+        "flzcalendar/lib/Service/CalendarDemoPackService.php",
+        "flzurlaub/lib/Service/HolidayCalendarService.php"
       ],
       "category": "gemeinsamer Vertrag",
       "state": "implementation-in-uncommitted-worktree-pending-contract-and-staging-acceptance",
@@ -131,14 +131,14 @@
     },
     {
       "id": "holiday-calendar-provider-cache",
-      "repositories": ["localbase", "adurlaub", "adcalendar", "adroom"],
+      "repositories": ["localbase", "flzurlaub", "flzcalendar", "flzroom"],
       "locations": [
         "localbase/lib/Calendar/OpenHolidaysClient.php",
         "localbase/lib/Calendar/HolidayCalendarService.php",
         "localbase/lib/Calendar/HolidayCalendarCacheStore.php",
-        "adurlaub/lib/Service/HolidayCalendarService.php",
-        "adcalendar/js/modules/holiday-calendar.js",
-        "adroom/lib/Service/HolidayService.php"
+        "flzurlaub/lib/Service/HolidayCalendarService.php",
+        "flzcalendar/js/modules/holiday-calendar.js",
+        "flzroom/lib/Service/HolidayService.php"
       ],
       "category": "gemeinsamer Vertrag",
       "state": "implementation-in-uncommitted-worktree-pending-contract-and-staging-acceptance",
@@ -158,55 +158,55 @@
     },
     {
       "id": "calendar-kopano-default",
-      "repositories": ["adcalendar"],
+      "repositories": ["flzcalendar"],
       "locations": [
-        "adcalendar/lib/Service/ExternalCalendarService.php",
-        "adcalendar/js/components/external-calendars.js",
-        "adcalendar/templates/admin.php",
-        "adcalendar/templates/partials/settings.php"
+        "flzcalendar/lib/Service/ExternalCalendarService.php",
+        "flzcalendar/js/components/external-calendars.js",
+        "flzcalendar/templates/admin.php",
+        "flzcalendar/templates/partials/settings.php"
       ],
       "category": "Administration",
       "state": "duplicated-default-user-overridable",
-      "targetOwner": "adcalendar",
+      "targetOwner": "flzcalendar",
       "action": "Kopano-/CalDAV-Vorgabe einmal im Adminbereich speichern und an den persönlichen Dialog ausliefern; https://mail.adberlin.org bleibt Migrationsdefault und persönlich änderbar.",
       "priority": 5
     },
     {
       "id": "external-calendar-target-name",
-      "repositories": ["adcalendar"],
+      "repositories": ["flzcalendar"],
       "locations": [
-        "adcalendar/lib/CalendarSync/ShiftCalendarPublisher.php",
-        "adcalendar/lib/CalendarSync/ExternalCalendarConnectionStore.php",
-        "adcalendar/js/components/shift-calendar-sync.js",
-        "adcalendar/templates/partials/settings.php"
+        "flzcalendar/lib/CalendarSync/ShiftCalendarPublisher.php",
+        "flzcalendar/lib/CalendarSync/ExternalCalendarConnectionStore.php",
+        "flzcalendar/js/components/shift-calendar-sync.js",
+        "flzcalendar/templates/partials/settings.php"
       ],
       "category": "Administration",
       "state": "duplicated",
-      "targetOwner": "adcalendar",
+      "targetOwner": "flzcalendar",
       "action": "Den sichtbaren Zielkalendernamen als validierten App-Adminwert führen und serverseitig ausliefern; technische DAV-IDs bleiben stabil.",
       "priority": 5
     },
     {
       "id": "external-provider-protocol-contracts",
-      "repositories": ["adcalendar"],
+      "repositories": ["flzcalendar"],
       "locations": [
-        "adcalendar/lib/CalendarSync/GoogleOAuthService.php",
-        "adcalendar/lib/CalendarSync/GoogleCalendarClient.php",
-        "adcalendar/lib/CalendarSync/ExternalCalendarUrlValidator.php"
+        "flzcalendar/lib/CalendarSync/GoogleOAuthService.php",
+        "flzcalendar/lib/CalendarSync/GoogleCalendarClient.php",
+        "flzcalendar/lib/CalendarSync/ExternalCalendarUrlValidator.php"
       ],
       "category": "Codevertrag",
       "state": "intentional",
-      "targetOwner": "adcalendar provider adapters",
+      "targetOwner": "flzcalendar provider adapters",
       "action": "OAuth-Endpunkte, Scope, HTTPS-Allowlist, SSRF-Prüfung, Protokollmarker und Sicherheitslimits nicht administrierbar machen.",
       "priority": 9
     },
     {
-      "id": "adplaner-shift-bootstrap",
-      "repositories": ["adplaner"],
-      "locations": ["adplaner/lib/Service/ShiftConfigService.php"],
+      "id": "flzplaner-shift-bootstrap",
+      "repositories": ["flzplaner"],
+      "locations": ["flzplaner/lib/Service/ShiftConfigService.php"],
       "category": "Administration",
       "state": "already-configurable-bootstrap-default",
-      "targetOwner": "adplaner",
+      "targetOwner": "flzplaner",
       "action": "Früh-/Spät-/Nachtschichten und Zeiten als Team-Startwerte beibehalten; Labels später lokalisieren, technische Schichtschlüssel stabil halten.",
       "priority": 8
     },
@@ -265,32 +265,32 @@
       "priority": 8
     },
     {
-      "id": "month-and-weekday-labels-adplaner",
-      "repositories": ["adplaner"],
-      "locations": ["adplaner/js/modules/ui.js"],
+      "id": "month-and-weekday-labels-flzplaner",
+      "repositories": ["flzplaner"],
+      "locations": ["flzplaner/js/modules/ui.js"],
       "category": "Übersetzung",
       "state": "manual-arrays",
-      "targetOwner": "adplaner",
+      "targetOwner": "flzplaner",
       "action": "Monats- und Wochentagsnamen mit Intl.DateTimeFormat aus aktiver Locale erzeugen; ISO-Daten unverändert lassen.",
       "priority": 6
     },
     {
-      "id": "month-and-weekday-labels-adurlaub",
-      "repositories": ["adurlaub"],
-      "locations": ["adurlaub/js/components/vacation-plan.js"],
+      "id": "month-and-weekday-labels-flzurlaub",
+      "repositories": ["flzurlaub"],
+      "locations": ["flzurlaub/js/components/vacation-plan.js"],
       "category": "Übersetzung",
       "state": "manual-arrays-and-ternary",
-      "targetOwner": "adurlaub",
+      "targetOwner": "flzurlaub",
       "action": "Monats- und Wochentagsnamen mit Intl.DateTimeFormat aus aktiver Locale erzeugen; Feriennamen bleiben Providerdaten.",
       "priority": 6
     },
     {
-      "id": "weekday-labels-adcalendar",
-      "repositories": ["adcalendar"],
-      "locations": ["adcalendar/js/components/shift-defaults.js"],
+      "id": "weekday-labels-flzcalendar",
+      "repositories": ["flzcalendar"],
+      "locations": ["flzcalendar/js/components/shift-defaults.js"],
       "category": "Übersetzung",
       "state": "manual-array",
-      "targetOwner": "adcalendar",
+      "targetOwner": "flzcalendar",
       "action": "Wochentagsnamen aus der aktiven Locale erzeugen und technische Wochentagsnummern beibehalten.",
       "priority": 6
     },
@@ -310,10 +310,10 @@
     {
       "id": "visible-user-texts",
       "repositories": [
-        "adcalendar",
-        "adplaner",
-        "adroom",
-        "adurlaub",
+        "flzcalendar",
+        "flzplaner",
+        "flzroom",
+        "flzurlaub",
         "br_permission_matrix",
         "brstunden",
         "brtop",
@@ -329,11 +329,11 @@
     },
     {
       "id": "runtime-safety-limits",
-      "repositories": ["adcalendar", "adplaner", "adurlaub", "brstunden"],
+      "repositories": ["flzcalendar", "flzplaner", "flzurlaub", "brstunden"],
       "locations": [
-        "adcalendar/lib/Model/RecurrenceRule.php",
-        "adplaner/lib/Service/ShiftConfigService.php",
-        "adurlaub/lib/Calendar/OpenHolidaysClient.php",
+        "flzcalendar/lib/Model/RecurrenceRule.php",
+        "flzplaner/lib/Service/ShiftConfigService.php",
+        "flzurlaub/lib/Calendar/OpenHolidaysClient.php",
         "brstunden/lib/BackgroundJob/MonthlyReminderJob.php"
       ],
       "category": "Codevertrag",

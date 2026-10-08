@@ -1,6 +1,6 @@
-# AD Suite für Nextcloud
+# Filzmann Full Suite für Nextcloud
 
-Die AD Suite führt sechs eigenständige Fachprodukte für Dienst-, Assistenz-,
+Die Filzmann Full Suite führt sechs eigenständige Fachprodukte für Dienst-, Assistenz-,
 Urlaubs-, Raum-, Bewerbungs- und Basisqualifizierungsprozesse unter einer
 gemeinsamen Navigation und Organisationskonfiguration. Der aktuelle
 Release-Candidate bündelt weiterhin die fünf bereits lieferbaren Produkte
@@ -16,13 +16,13 @@ mit LocalBase und OrgSuite, insgesamt sieben Apps.
 | App | Aufgabe | Quellcode |
 | --- | --- | --- |
 | LocalBase | Gemeinsame Organisations-, Rechte-, Kalender- und UI-Verträge | [nextcloud-localbase](https://github.com/Filzmann/nextcloud-localbase) |
-| OrgSuite | Gemeinsame AD-/BR-Navigation und app-übergreifende Administration | [nextcloud-orgsuite](https://github.com/Filzmann/nextcloud-orgsuite) |
-| AD Kalender | Dienste, Termine, Sperrtermine, Personensuche und Meetinglücken | [nextcloud-adcalendar](https://github.com/Filzmann/nextcloud-adcalendar) |
-| Assistenzplanung | Monatliche Wunschdienstplanung für dynamische Assistenzteams | [nextcloud-adplaner](https://github.com/Filzmann/nextcloud-adplaner) |
-| AD Urlaub | Geplante und genehmigte Urlaube mit Rechte- und Konfliktprüfung | [nextcloud-adurlaub](https://github.com/Filzmann/nextcloud-adurlaub) |
-| AD Raumplaner | Zeitlich ausgerichtete, kollisionsfreie Raumbuchungen | [nextcloud-adroom](https://github.com/Filzmann/nextcloud-adroom) |
-| AD Recruitment (`adrecruitment`) | Stellen, Personen, Bewerbungen und versionierte Interviews | [nextcloud-recruitment](https://github.com/Filzmann/nextcloud-recruitment) |
-| AD BQ-Planer (`adbqplanung`) | Basisqualifizierungen, Curricula, Dozentinnen und Praxisreflexionen | noch nicht öffentlich veröffentlicht |
+| OrgSuite | Gemeinsame FLZ-/BR-Navigation und app-übergreifende Administration | [nextcloud-orgsuite](https://github.com/Filzmann/nextcloud-orgsuite) |
+| Filzmann Kalender | Dienste, Termine, Sperrtermine, Personensuche und Meetinglücken | [nextcloud-flzcalendar](https://github.com/Filzmann/nextcloud-flzcalendar) |
+| Assistenzplanung | Monatliche Wunschdienstplanung für dynamische Assistenzteams | [nextcloud-flzplaner](https://github.com/Filzmann/nextcloud-flzplaner) |
+| Filzmann Urlaubsplanung | Geplante und genehmigte Urlaube mit Rechte- und Konfliktprüfung | [nextcloud-flzurlaub](https://github.com/Filzmann/nextcloud-flzurlaub) |
+| Filzmann Raumplaner | Zeitlich ausgerichtete, kollisionsfreie Raumbuchungen | [nextcloud-flzroom](https://github.com/Filzmann/nextcloud-flzroom) |
+| Filzmann Recruitment (`flzrecruitment`) | Stellen, Personen, Bewerbungen und versionierte Interviews | [nextcloud-flzrecruitment](https://github.com/Filzmann/nextcloud-flzrecruitment) |
+| Filzmann BQ-Planer (`flzbqplanung`) | Basisqualifizierungen, Curricula, Dozentinnen und Praxisreflexionen | noch nicht öffentlich veröffentlicht |
 
 Die fünf freigegebenen Fachapps sind einzeln verkauf-, installier- und nutzbar. Jedes
 Produktbundle bringt LocalBase und OrgSuite als kompatible Infrastruktur mit;
@@ -32,8 +32,8 @@ Fehler behandelt: Die jeweilige Direktfunktion entfällt oder bleibt als
 manueller Fachweg verfügbar.
 
 Der versionierte LocalBase-Produktkatalog trennt Menüzugehörigkeit,
-Standalone-Fähigkeit und Bundle-Zugehörigkeit. AD Recruitment gehört zum
-gemeinsamen AD-Menü, zum vollständigen AD-Suite-Archiv und erhält ein eigenes
+Standalone-Fähigkeit und Bundle-Zugehörigkeit. Filzmann Recruitment gehört zum
+gemeinsamen FLZ-Menü, zum vollständigen Archiv der Filzmann Full Suite und erhält ein eigenes
 Produktpaket. Es wird nicht in Produktpakete anderer Fachapps aufgenommen.
 Der BQ-Planer ist bereits Menü- und Standalone-Produkt, seine Full-Suite- und
 Einzelbundle-Flags bleiben bis zur Release-Reife deaktiviert.
@@ -57,7 +57,7 @@ in den jeweiligen App-Repositories. Abgelöste Planstände werden nicht als
 zweite Dokumentwahrheit gepflegt; maßgeblich sind der Root-Zukunftsplan und
 die App-Roadmaps.
 
-Die fünf Produktbundles `ad-product-<app-id>-<release>.tar.gz`, das vollständige Suite-Bundle, Versionsmanifeste und SHA-256-Prüfsummen werden gemeinsam im jeweiligen GitHub-Release bereitgestellt. Produktinstallationen verwenden das enthaltene `install.sh` und nicht einzelne rohe Fachapp-Archive.
+Die fünf Produktbundles `flz-product-<app-id>-<release>.tar.gz`, das vollständige Suite-Bundle, Versionsmanifeste und SHA-256-Prüfsummen werden gemeinsam im jeweiligen GitHub-Release bereitgestellt. Produktinstallationen verwenden das enthaltene `install.sh` und nicht einzelne rohe Fachapp-Archive.
 
 ## Lizenz und Leistungen
 
